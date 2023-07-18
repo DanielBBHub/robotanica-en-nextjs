@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
+
+.body{
+    background: #ffffff;
+}
+
+.titulo{
+    padding-top: 2em;
+    font-family: 'Comfortaa', cursive;
+    color: #7c9969;
+    font-weight: bold;
+    font-size: 56px;
+}
+
+.informacion_usuario{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 3em;
+    border-radius: 50px;
+}
+
+.contenedor{
+    margin-top: 5rem;
+    
+}
+
+.imgUsuario{
+    width: 100px;
+    height: 100px;
+}
+
+.camposPerfil{
+    font-family: 'Inconsolata', monospace;
+    color: #7c9969;
+    margin-right: 6em;
+    font-weight: bold;
+    font-size:x-large;
+}
+
+.centro{
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-self: center;
+}
+
+.izquierda{
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: left;
+    margin-left: 20em;
+}
+
+.derecha{
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: left;
+    margin-right: 20em;
+}
+
+
+.texto{
+    color:  #475d39;
+}
+
+
+.botonCTA{
+    margin-top: 1rem;
+    border-radius: 15px;
+
+}
+
+
+.botonCTA:hover{
+    background: #7c9969;
+    box-shadow: 0 0 6px #363636
+}

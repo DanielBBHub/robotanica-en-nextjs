@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
+.vars{
+    --negro: #141414;
+    --grisNegro: #2d2d2d;
+    --verdeOscuro: #323e2d;
+    --verde: #7C9969;
+    --blanco: #ffffff;
+    --fondo: #FFFFF0;
+}
+
+.header{
+    position: "fixed"; 
+    width: 100%;
+    z-index: 1
+}
+.negro{
+    background: #141414;
+}
+
+.white{
+    color: white;
+}
+
+.menu1{
+    background: #2d2d2d;
+}
+
+.menu2:hover{
+    background: #2d2d2d;
+}
+
+.imagen_header{
+    width: 4.5rem;
+    margin-top: -4px;
+    margin-left: 3rem;
+}
+
+.login_header{
+    width: 3rem;
+    margin-top: 7px;
+    margin-right: 3rem;
+}
+
+.footer{
+    background:  #ffffff;
+    position: absolute;
+    bottom: 0;
+}
