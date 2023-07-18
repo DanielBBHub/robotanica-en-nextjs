@@ -1,3 +1,9 @@
+//Importando la libreria del motor de busqueda de BD
+import { PrismaClient } from "@prisma/client"
+
+//Instanciando un objeto prisma para la conexion
+const prisma = new PrismaClient()
+
 export const config = {
     //runtime: 'edge',
 }
