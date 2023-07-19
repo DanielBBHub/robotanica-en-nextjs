@@ -51,13 +51,6 @@ export default function Login()
                     type="checkbox"
                     className="toggle"
                   />
-                  <script type="text/javascript">
-                    var login = document.getElementById("login"); var registro =
-                    document.getElementById("registro");
-                    document.getElementById("ff").style.display = "block";
-                    document.getElementById("aa").style.display = "none";
-                    login.disabled = true; registro.disabled = false;
-                  </script>
                 </label>
               </div>
             </div>
@@ -73,7 +66,7 @@ export default function Login()
                 </h2>
               </div>
               <form
-                action="/api/usuario"
+                action="/api/login"
                 method="POST"
                 className="mt-5 sm:mx-auto sm:max-w-sm"
                 noValidate

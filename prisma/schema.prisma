@@ -1,11 +1,39 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./db/robotanica.db"
+  url      = "file:../db/robotanica.db"
+}
+
+model Invernaderos {
+  dniUser       String @id
+  nombre        String
+  direccion     String
+  area          Int
+  tipo          String
+  idInvernadero String
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Productos {
+  idInvernadero   String? @id
+  productos       String
+  madurez         String
+  fechaPlantacion String
+  coords          String
+
+  @@ignore
+}
+
+model Usuarios {
+  nombreApellidos String?
+  correo          String
+  telefono        Int?
+  pass            String
+  dni             String  @id
+  token           String?
+  verify          Int?    @default(0)
+  imagen          String?
 }
