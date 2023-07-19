@@ -1,5 +1,6 @@
 import Layout from "@/components/layout";
 import login from "../../styles/login.module.css"
+import { useRouter } from 'next/router'
 
 function toggle(){
   var toggle = document.getElementById('container');
@@ -27,6 +28,14 @@ function toggle(){
 
 export default function Login()
 {
+  //Se instancia un objeto router con las siguientes propiedades: https://nextjs.org/docs/pages/api-reference/functions/use-router#router-object
+  //Lo utilizo para comprobar si hay una query en la url, en caso de que la autenticacion haya sido erronea
+  const router = useRouter()
+  //Se recoge el objeto "query" con el que comprobaremos si ha intentado entrar sin exito el usuario (por defecto es: {})
+  const {msg} = router.query
+  //Mensaje a mostrar en caso de que sea invalida la informacion de inicio de sesion
+  const error = "DNI o contraseña invalidos"
+
     return (
       <>
         <Layout login>
@@ -34,11 +43,11 @@ export default function Login()
           <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
             <div className={`form-control ${login.centrar}`}>
               <div className={login.cambio2}>
-                <div id="res" className={login.cambio3}>
-                  <p>Registro</p>
-                </div>
                 <div id="ini" className={login.cambio3}>
                   <p>Iniciar sesión</p>
+                </div>
+                <div id="res" className={login.cambio3}>
+                  <p>Registro</p>
                 </div>
               </div>
             </div>
@@ -118,7 +127,9 @@ export default function Login()
                   </div>
                 </div>
                 <br />
-                <h4 className={login.textrojo} id="verificar"></h4>
+                {/* Se comprueba que haya habido un login incorrecto, si es el caso se lanza el mensaje de error */}
+                { msg  ? (<h4 className={login.textrojo} id="verificar">{error}</h4>) : (<></>)}
+                
                 <div>
                   <input
                     id="login"

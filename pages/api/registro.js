@@ -13,9 +13,14 @@ export default async function handler(req, res)
     console.log("Accedido API")
     if(req.method == "POST")
     {
-        console.log("Usuario " + req.body["dniUsuarioL"])
-        console.log("Pass " + req.body["password"])
-        const allUsers = await prisma.usuarios.findMany()
-        console.log(allUsers)
+        //Se recogen los parametros del formulario de inicio de sesion desde el
+        //cuerpo de la peticion HTTP
+        const dniUsuario = req.body["dniUsuarioL"]
+        //Por algun motivo es necesario cambiar una coma que aparece al final del valor
+        //recogido del input para la pass
+        //TODO: mirar por que ocurre esto
+        const passUsuario = String(req.body["password"]).replace(",", "")
+        
+        
     }
 }

@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
+.titulo{
+    padding-top: 3em;
+    font-family: 'Comfortaa', cursive;
+    color:#7c9969;
+    font-weight: bold;
+    font-size: 56px;
+}
+
+.informacion_usuario{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 1rem;
+    border-radius: 50px;
+}
+
+.contenedor{
+    margin-top: 5rem;
+    
+}
+
+.cerrar_sesion_header{
+    width: 2rem;
+    margin-top: 1rem;
+    margin-right: 3rem;
+}
+
+.imgUsuario{
+    width: 100px;
+    height: 100px;
+}
+
+.camposPerfil{
+    font-family: 'Inconsolata', monospace;
+    color: #7c9969;
+    margin-right: 6em;
+    font-weight: bold;
+    font-size:x-large;
+}
+
+.centro{
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.izquierda{
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: left;
+    margin-left: 20em;
+}
+
+.derecha{
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: left;
+    margin-right: 20em;
+}
+
+.botonCTA {
+    margin-top: 3.5em;
+    margin-bottom: 2em;
+    background: #475d39;
+    color: whitesmoke;
+}
+
+.botonCTA:hover{
+    background: #7c9969;
+    box-shadow: 0 0 6px #363636
+}
+
+.texto{
+    color: #475d39;
+}

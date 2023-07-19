@@ -1,46 +1,56 @@
 //Importando la libreria del motor de busqueda de BD
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient } from "@prisma/client";
+import { redirect } from "next/navigation";
 
 //Instanciando un objeto prisma para la conexion
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 export const config = {
-    //runtime: 'edge',
-}
+  //runtime: 'edge',
+};
 
-export default async function handler(req, res)
-{
-    console.log("Accedido API")
-    if(req.method == "POST")
-    {
-        //Se recogen los parametros del formulario de inicio de sesion desde el
-        //cuerpo de la peticion HTTP
-        const dniUsuario = req.body["dniUsuarioL"]
-        const passUsuario = req.body["password"]
-        console.log("Usuario " + req.body["dniUsuarioL"])
-        console.log("Pass " + req.body["password"])
+/* req.body {
+    dniUsuarioL: [int]
+    password: String
+    } ------------>
 
-        try{
-            //Peticion para encontrar un registro unico en la DB de manera asincrona
-            const usuarioEntrando = await prisma.usuarios.findUnique({
-                //Condicion dni == dniUsuario
-                where:
-                {
-                    dni: dniUsuario
-                }
-            })
-            //Comparacion de la contraseña introducida y de la recibida de la DB
-            console.log(usuarioEntrando.pass.localeCompare(passUsuario) == 0)
-            if(usuarioEntrando.pass.localeCompare(passUsuario) == 0){
-                res.status(200).send({"usuario": usuarioEntrando})
-            }else{
-                res.status(404).send("DNI o contraseña equivocadas")
-            }
-            
-        }catch(err){
-            res.status(500).send(err)
-        }
-        
-        
+    handler() ------------>
+
+    Redireccion Perfil / mensaje de error
+*/
+export default async function handler(req, res) {
+  console.log("Accedido API");
+  if (req.method == "POST") {
+    //Se recogen los parametros del formulario de inicio de sesion desde el
+    //cuerpo de la peticion HTTP
+    const dniUsuario = req.body["dniUsuarioL"];
+    //Por algun motivo es necesario cambiar una coma que aparece al final del valor
+    //recogido del input para la pass
+    //TODO: mirar por que ocurre esto
+    const passUsuario = String(req.body["password"]).replace(",", "");
+
+    try {
+      //Peticion para encontrar un registro unico en la DB de manera asincrona
+      const usuarioEntrando = await prisma.usuarios.findUnique({
+        //Condicion dni == dniUsuario
+        //          pass == passUsuario
+        where: {
+          dni: dniUsuario,
+          pass: passUsuario,
+        },
+      });
+      //Comparacion de la contraseña introducida y de la recibida de la DB
+      console.log(usuarioEntrando);
+      if (usuarioEntrando == null) {
+        //Utilizo redirect() para rediriguir al usuario a la misma página
+        //despues de comprobar que no existe
+        res.redirect("/entrar/login?msg=login-incorrecto");
+        return;
+      } else {
+        res.redirect("/usuario/perfil");
+      }
+    } catch (err) {
+      res.status(500).send(err);
     }
+  }
 }
