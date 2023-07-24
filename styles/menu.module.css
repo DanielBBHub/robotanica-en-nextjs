@@ -2,15 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
 
-.vars{
-    --negro: #141414;
-    --grisNegro: #2d2d2d;
-    --verdeOscuro: #323e2d;
-    --verde: #7C9969;
-    --blanco: #ffffff;
-    --fondo: #FFFFF0;
-}
-
 .header{
     position: "fixed"; 
     width: 100%;
@@ -19,7 +10,9 @@
 .negro{
     background: #141414;
 }
-
+.body{
+    background: white;
+}
 .white{
     color: white;
 }

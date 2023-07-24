@@ -58,7 +58,7 @@ export default function EditarPerfil()
                   <br />
                   <div>
                     <label
-                      for="cambiarCorreoTXT"
+                      htmlFor="cambiarCorreoTXT"
                       className="textos block leading-6"
                     >
                       Ingrese tu nuevo correo:
@@ -77,7 +77,7 @@ export default function EditarPerfil()
                   <br />
                   <div className="text-sm">
                     <label
-                      for="my-modal-3"
+                      htmlFor="my-modal-3"
                       className={`${editar.textos} ${editar.contra} font-semibold hover:drop-shadow-xl ${editar.cursor}`}
                     >
                       ¿Has olvidado tu contraseña? ¿Quieres cambiarla?
@@ -99,15 +99,17 @@ export default function EditarPerfil()
                     id="my-modal-1"
                     className="modal-toggle"
                   />
-                  <div className={editar.modal}>
+                  <div className={editar.modal} id="modoalGuardado">
                     <div className="modal-box relative">
-                      <label
+                      <button
                         htmlFor="my-modal-1"
                         style={{cursor: "pointer"}}
+                        
                         className="btn-sm absolute right-2 top-2"
+                        onClick={()=> $('#modoalGuardado').modal('hid')}
                       >
                         ✕
-                      </label>
+                      </button>
                       <p className="py-4">
                         La información ha sido guardada correctamente.
                       </p>
@@ -120,9 +122,9 @@ export default function EditarPerfil()
                     className="modal-toggle"
                   />
                   <div className={editar.modal}>
-                    <div className="modal-box relative">
+                    <div className="modal-box relative hidden">
                       <label
-                        for="my-modal-3"
+                        htmlFor="my-modal-3"
                         style={{cursor: "pointer"}}
                         className="btn-sm absolute right-2 top-2"
                       >

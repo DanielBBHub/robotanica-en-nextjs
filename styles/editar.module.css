@@ -29,6 +29,7 @@
     align-items: center;
     text-align: center;
     font-weight: bold;
+    
 }
 
 .registro{
@@ -82,10 +83,6 @@
 .cursor{
     cursor: pointer;
 }
-
-
-
-
 
 .profile_img {
     width: 150px;

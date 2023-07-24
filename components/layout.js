@@ -11,14 +11,18 @@ export default function Layout({
   contacto,
   acercade,
   perfil,
+  editarPerfil,
+  funcionalidades
 }) {
   return (
     <>
+    
+    
       {/* <Header /> */}
-      <header style={{ position: "fixed", width: 100 + "%", zindex: 1 }}>
+      <header style={{ position: "fixed", width: 100 + "%", zindex: 1, top: 0 }}>
         {/* Para migrar los estilos propios combinados con el codigo de Tailwind se utiliza la siguiente sintaxis:
                      className={`${styleModule.ownStyle} [Codigo Tailwind]`}*/}
-        <nav className={`${estiloMenu.negro} flex h-16`}>
+        <nav className={`${estiloMenu.negro} flex h-16`} style={{ position: "fixed", width: 100 + "%", zindex: 1, top: 0 }}>
           <div className={estiloMenu.imagen_header}>
             <Link href="/">
               <img src="/images/Logo.png" />
@@ -30,6 +34,7 @@ export default function Layout({
               <div className="ml-10 flex items-baseline space-x-4">
                 {index ? (
                   <>
+                  <title>Robotánica</title>
                     {" "}
                     <Link
                       href="/"
@@ -60,6 +65,7 @@ export default function Layout({
                 ) : null}
                 {informacion ? (
                   <>
+                  <title>Información</title>
                     {" "}
                     <Link
                       href="/"
@@ -90,6 +96,7 @@ export default function Layout({
                 ) : null}
                 {contacto ? (
                   <>
+                  <title>Contacto</title>
                     {" "}
                     <Link
                       href="/"
@@ -121,6 +128,7 @@ export default function Layout({
 
                 {acercade ? (
                   <>
+                  <title>Acerca de...</title>
                     {" "}
                     <Link
                       href="/"
@@ -151,10 +159,53 @@ export default function Layout({
                 ) : null}
                 {perfil ? (
                   <>
+                  <title>Perfil</title>
                     {" "}
                     <Link
-                      href="/botones"
+                      href="/usuario/perfil"
+                      className={`${estiloMenu.menu1} text-gray-300 hover:text-white rounded-md px-3 py-2 text-sm font-medium`}
+                    >
+                      Perfil
+                    </Link>
+                    <Link
+                      href="/usuario/funcionalidades"
                       className={`${estiloMenu.menu2} text-gray-300 hover:text-white rounded-md px-3 py-2 text-sm font-medium`}
+                    >
+                      Funcionalidades
+                    </Link>
+                  </>
+                ) : null}
+                {editarPerfil ? (
+                  <>
+                  <title>Editar perfil</title>
+                    {" "}
+                    <Link
+                      href="/usuario/perfil"
+                      className={`${estiloMenu.menu2} text-gray-300 hover:text-white rounded-md px-3 py-2 text-sm font-medium`}
+                    >
+                      Perfil
+                    </Link>
+                    <Link
+                      href="/usuario/funcionalidades"
+                      className={`${estiloMenu.menu2} text-gray-300 hover:text-white rounded-md px-3 py-2 text-sm font-medium`}
+                    >
+                      Funcionalidades
+                    </Link>
+                  </>
+                ) : null}
+                {funcionalidades ? (
+                  <>
+                  <title>Funcionalidades</title>
+                    {" "}
+                    <Link
+                      href="/usuario/perfil"
+                      className={`${estiloMenu.menu2} text-gray-300 hover:text-white rounded-md px-3 py-2 text-sm font-medium`}
+                    >
+                      Perfil
+                    </Link>
+                    <Link
+                      href="/usuario/funcionalidades"
+                      className={`${estiloMenu.menu1} text-gray-300 hover:text-white rounded-md px-3 py-2 text-sm font-medium`}
                     >
                       Funcionalidades
                     </Link>
@@ -188,7 +239,7 @@ export default function Layout({
       </header>
 
       {/* -----------------------------------------CONTENIDO DE LA PAGINA----------------------------------------------------- */}
-      <main>{children}</main>
+      <main className={estiloMenu.body} style={{padding: 16 + "px"}}>{children}</main>
       {/* -----------------------------------------CONTENIDO DE LA PAGINA----------------------------------------------------- */}
 
       <Footer />

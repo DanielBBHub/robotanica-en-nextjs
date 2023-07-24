@@ -42,7 +42,7 @@ export default function Perfil() {
                 Fecha de creación:{" "}
               </h3>
               <h4 id="fechaUsuarioTxt" className={estiloMenu.texto}></h4>
-              <Link href="/editar_perfil">
+              <Link href="/usuario/editar_perfil">
                 <button className="btn botonCTA">EDITAR PERFIL</button>
               </Link>
             </div>
