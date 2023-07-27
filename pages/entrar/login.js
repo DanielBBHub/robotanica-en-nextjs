@@ -129,7 +129,7 @@ export default function Login()
                 </div>
                 <br />
                 {/* Se comprueba que haya habido un login incorrecto, si es el caso se lanza el mensaje de error */}
-                { msg  ? (<h4 className={login.textrojo} id="verificar">{error}</h4>) : (<></>)}
+                { msg == "login-incorrecto"  ? (<h4 className={login.textrojo} id="verificar">{error}</h4>) : (<></>)}
                 
                 <div>
                   <input
@@ -182,7 +182,7 @@ export default function Login()
             {/* <!---------------------------------------------------------------------------------------->
 
     <!----------------------------------------- REGISTRO -------------------------------------> */}
-            <div id="ff" className="">
+            <div id="ff" className="" hidden>
               <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <h2
                   className={`${login.registro} mt-5 text-center leading-9 tracking-tight`}
@@ -191,7 +191,10 @@ export default function Login()
                 </h2>
               </div>
 
-              <div className={login.borde}>
+              <form 
+                action="/api/registro"
+                method="POST"
+                className={login.borde}>
                 <div className="flex justify-around">
                   <div className={login.ee}>
                     <h4 className={login.subregistro}>Datos personales</h4>
@@ -205,7 +208,7 @@ export default function Login()
                       <div className="mt-2">
                         <input
                           id="nombreUsuario"
-                          name="nombre"
+                          name="nombreUsuario"
                           type="text"
                           required
                           className={`${login.textos_imput} block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset sm:leading-6`}
@@ -222,7 +225,7 @@ export default function Login()
                       <div className="mt-2">
                         <input
                           id="apellidosUsuario"
-                          name="apellidos"
+                          name="apellidosUsuario"
                           type="text"
                           required
                           className={`${login.textos_imput} block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset sm:leading-6`}
@@ -239,7 +242,7 @@ export default function Login()
                       <div className="mt-2">
                         <input
                           id="dniUsuario"
-                          name="DNI"
+                          name="dniUsuario"
                           type="text"
                           required
                           className={`${login.textos_imput} block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset sm:leading-6`}
@@ -256,8 +259,8 @@ export default function Login()
                       <div className="mt-2">
                         <input
                           id="telefonoUsuario"
-                          name="telefono"
-                          type="text"
+                          name="telefonoUsuario"
+                          type="tel"
                           required
                           className={`${login.textos_imput} block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset sm:leading-6`}
                         />
@@ -277,7 +280,7 @@ export default function Login()
                       <div className="mt-2">
                         <input
                           id="correoUsuario"
-                          name="correo"
+                          name="correoUsuario"
                           type="email"
                           required
                           className={`${login.textos_imput} block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset sm:leading-6`}
@@ -295,7 +298,7 @@ export default function Login()
                     <div className="mt-2">
                       <input
                         id="passwordUsuario"
-                        name="password"
+                        name="passwordUsuario"
                         type="password"
                         autoComplete="current-password"
                         required
@@ -314,7 +317,7 @@ export default function Login()
                     <div className="mt-2">
                       <input
                         id="passwordUsuarioRe"
-                        name="password"
+                        name="passwordUsuarioRe"
                         type="password"
                         autoComplete="current-password"
                         required
@@ -338,18 +341,22 @@ export default function Login()
                         </a>
                       </label>
                     </div>
-
+                    { msg == "contrasenyas-no-coincidentes"  ? (<h4 className={login.textrojo} id="verificar">Las contraseñas no coinciden</h4>) : (<></>)}
+                
                     <div className="items-center">
                       <button
                         id="registro"
+                        
                         className={`${login.botones} ${login.botones2} bg-lime-800 hover:bg-lime-900 hover:drop-shadow-xl w-4em rounded-md px-3 py-1.5 leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2`}
                       >
                         ENVIAR
                       </button>
+                    
+                      
                     </div>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </Layout>

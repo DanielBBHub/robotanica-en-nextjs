@@ -32,7 +32,7 @@ model Usuarios {
   correo          String
   telefono        Int?
   pass            String
-  dni             String  @id
+  dni             String  @unique
   token           String?
   verify          Int?    @default(0)
   imagen          String?

@@ -5,7 +5,8 @@ import estilos from "../styles/style.module.css"
 
 export default function Informacion() 
 {
-    return (<Layout informacion>
+    return (
+    <Layout informacion>
     <div>
    <h2 class={informacion.titulo}>INFORMACIÓN ADICIONAL</h2>
 
@@ -13,7 +14,7 @@ export default function Informacion()
 
     <div class="flex justify-center pt-3">
         <img class={informacion.imagen} src="/images/rr.jpg" alt=""/>
-        <div class={estiloMenu.contenedor}>
+        <div class={informacion.contenedor}>
             <h4 class={informacion.subtitulo}>Beneficios en la Agricultura</h4>
             <p class={informacion.texto}>
                 Los robots en la agricultura son máquinas inteligentes que pueden realizar diversas tareas relacionadas con el cultivo, el cuidado y la cosecha de los alimentos.

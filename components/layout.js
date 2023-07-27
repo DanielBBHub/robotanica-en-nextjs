@@ -215,7 +215,7 @@ export default function Layout({
             </div>
           </div>
 
-          {perfil ? (
+          {perfil || funcionalidades || editarPerfil ? (
             <div
               className="cerrar_sesion_header"
               style={{
@@ -239,7 +239,7 @@ export default function Layout({
       </header>
 
       {/* -----------------------------------------CONTENIDO DE LA PAGINA----------------------------------------------------- */}
-      <main className={estiloMenu.body} style={{padding: 16 + "px"}}>{children}</main>
+      <main className={estiloMenu.body} >{children}</main>
       {/* -----------------------------------------CONTENIDO DE LA PAGINA----------------------------------------------------- */}
 
       <Footer />
