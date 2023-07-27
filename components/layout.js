@@ -239,7 +239,7 @@ export default function Layout({
       </header>
 
       {/* -----------------------------------------CONTENIDO DE LA PAGINA----------------------------------------------------- */}
-      <main className={estiloMenu.body} >{children}</main>
+      <main className={estiloMenu.body}>{children}</main>
       {/* -----------------------------------------CONTENIDO DE LA PAGINA----------------------------------------------------- */}
 
       <Footer />

@@ -1,6 +1,5 @@
 //Importando la libreria del motor de busqueda de BD
 import { PrismaClient } from "@prisma/client";
-import { redirect } from "next/navigation";
 
 //Instanciando un objeto prisma para la conexion
 const prisma = new PrismaClient();
@@ -8,6 +7,8 @@ const prisma = new PrismaClient();
 export const config = {
   //runtime: 'edge',
 };
+
+import { withSessionRoute } from "../../lib/config/withSession";
 
 /* req.body {
     dniUsuarioL: [int]
@@ -18,12 +19,18 @@ export const config = {
 
     Redireccion Perfil / mensaje de error
 */
-export default async function handler(req, res) {
+
+/* Importamos la funcionalidad de Routing del archivo withSession.js 
+y le pasamos como parametro el manejador del login */
+export default withSessionRoute(handler);
+
+
+async function handler(req, res) {
   console.log("Accedido API login");
   if (req.method == "POST") {
     //Se recogen los parametros del formulario de inicio de sesion desde el
     //cuerpo de la peticion HTTP
-    const dniUsuario = req.body["dniUsuarioL"];
+    const dniUsuario = req.body["dniUsuarioL"]
     console.log(dniUsuario)
     //Por algun motivo es necesario cambiar una coma que aparece al final del valor
     //recogido del input para la pass
@@ -41,16 +48,33 @@ export default async function handler(req, res) {
         }
         )
       //Comparacion de la contraseña introducida y de la recibida de la DB
-      console.log(usuarioEntrando);
+     
       if (usuarioEntrando == null) {
-        await prisma.$disconnect();
         //Utilizo redirect() para rediriguir al usuario a la misma página
         //despues de comprobar que no existe
-        res.redirect("/entrar/login?msg=login-incorrecto");
-        return;
+        await prisma.$disconnect()
+        .then(
+          res.redirect("/entrar/login?msg=login-incorrecto")
+        );
+        
+        
       } else {
-        await prisma.$disconnect();
-        res.redirect("/usuario/perfil");
+        //En caso de ser satisfactorio la autenticacion se guarda la informacion del usuario
+        //en el objeto de sesion dentro de la peticion
+        req.session.user = {
+          nombre:usuarioEntrando.nombreApellidos,
+          dni: dniUsuario,
+          correo: usuarioEntrando.correo, 
+          imagen: usuarioEntrando.imagen,
+        };
+        //Guardamos la informacion de session
+        await req.session.save();
+
+        await prisma.$disconnect()
+        .then(
+          res.redirect("/usuario/perfil")
+        );
+        
       }
     } catch (err) {
       res.status(500).send(err);
